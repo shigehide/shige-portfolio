@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twins — Mishiro &amp; Mikuro | Atelier Shige</title>
+  <meta name="description" content="御子柴みしろ・御子柴みくろ。しげちゃんとともに旅する双子のキャラクター紹介ページ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== Twins ページ専用スタイル ===== */
+
+    .twins-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .twins-hero__bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(126,200,227,0.18) 0%,
+        rgba(247,247,247,0)    40%,
+        rgba(245,200,66,0.10)  100%
+      );
+      z-index: 0;
+    }
+
+    .twins-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .twins-hero__eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      opacity: 0.35;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .twins-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .twins-hero__title em {
+      font-style: italic;
+      color: #7EC8E3;
+    }
+
+    .twins-hero__copy {
+      font-size: 0.9rem;
+      line-height: 2;
+      opacity: 0.6;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== キャラクターカード ===== */
+    .twins-section {
+      padding: 100px 0;
+      background: var(--white-base);
+    }
+
+    .twins-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 860px;
+      margin: 60px auto 0;
+      padding: 0 40px;
+    }
+
+    .char-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.08);
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+    }
+    .char-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.13);
+    }
+
+    /* みしろ：白ベース */
+    .char-card--mishiro {
+      background: #fafafa;
+      border-top: 4px solid #7EC8E3;
+    }
+    /* みくろ：ダークベース */
+    .char-card--mikuro {
+      background: #222222;
+      color: #e8e8e8;
+      border-top: 4px solid #F5C842;
+    }
+
+    .char-card__visual {
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .char-card--mishiro .char-card__visual {
+      background: linear-gradient(160deg, rgba(126,200,227,0.18) 0%, rgba(247,247,247,0) 100%);
+    }
+    .char-card--mikuro .char-card__visual {
+      background: linear-gradient(160deg, rgba(245,200,66,0.15) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    .char-card__visual-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.35;
+    }
+    .char-card__visual-placeholder span {
+      font-family: var(--font-serif);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+    }
+
+    .char-card__body {
+      padding: 24px 28px 28px;
+    }
+
+    .char-card__name-en {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+    .char-card--mikuro .char-card__name-en {
+      color: #c8c8e8;
+    }
+
+    .char-card__name-ja {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+
+    .char-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .char-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid currentColor;
+    }
+    .char-card--mishiro .char-tag { color: #7EC8E3; }
+    .char-card--mikuro .char-tag  { color: #F5C842; }
+
+    .char-card__desc {
+      font-size: 0.82rem;
+      line-height: 1.9;
+      opacity: 0.7;
+    }
+
+    .char-card__voice {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+    }
+    .char-card--mikuro .char-card__voice {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+
+    /* ===== デビューカウントダウン ===== */
+    .debut-section {
+      padding: 100px 0;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .debut-badge {
+      display: inline-block;
+      font-size: 0.64rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 100px;
+      border: 1.5px solid #7EC8E3;
+      color: #7EC8E3;
+      margin-bottom: 32px;
+    }
+
+    .debut-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .debut-date {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      background: linear-gradient(90deg, #7EC8E3 0%, #F5C842 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 24px;
+      letter-spacing: 0.06em;
+    }
+
+    .debut-copy {
+      font-size: 0.88rem;
+      line-height: 2;
+      opacity: 0.6;
+      max-width: 400px;
+      margin: 0 auto 44px;
+    }
+
+    .debut-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 700px) {
+      .twins-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 28px;
+      }
+      .twins-hero {
+        padding: 100px 20px 60px;
+      }
+      .debut-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 右下固定マスコット -->
+  <img class="mascot-sticky"
+       src="assets/characters/dot/dotpict_animation_20260107_115826.gif"
+       alt="しげちゃん">
+
+  <!-- ナビゲーション -->
+  <nav class="site-nav">
+    <a class="site-nav__logo" href="index.html">Atelier Shige</a>
+    <ul class="site-nav__links">
+      <li><a href="index.html#works">WORKS</a></li>
+      <li><a href="index.html#about">ABOUT</a></li>
+      <li><a href="twins.html" style="opacity:1; color: #7EC8E3;">TWINS</a></li>
+      <li><a href="index.html#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==============================
+       HERO
+  ============================== -->
+  <section class="twins-hero">
+    <div class="twins-hero__bg"></div>
+    <div class="twins-hero__inner">
+      <p class="twins-hero__eyebrow reveal">Travel Companions</p>
+      <h1 class="twins-hero__title reveal">
+        <em>Mishiro</em> &amp; <em>Mikuro</em>
+      </h1>
+      <p class="twins-hero__title reveal" style="font-size: clamp(1rem, 2vw, 1.4rem); opacity: 0.5; margin-bottom: 20px;">
+        御子柴みしろ・御子柴みくろ
+      </p>
+      <p class="twins-hero__copy reveal">
+        旅の途中で出会った双子。<br>
+        白と黒、ふたつの声が<br>
+        しげちゃんの世界に降り立つ。
+      </p>
+    </div>
+  </section>
+
+  <!-- ==============================
+       CHARACTER CARDS
+  ============================== -->
+  <section class="twins-section">
+    <div class="section-inner">
+      <h2 class="section-title reveal" style="text-align:center;">Characters</h2>
+      <p class="section-sub reveal" style="text-align:center;">旅の道連れたち</p>
+    </div>
+
+    <div class="twins-grid">
+
+      <!-- みしろ -->
+      <div class="char-card char-card--mishiro reveal">
+        <div class="char-card__visual">
+          <div class="char-card__visual-placeholder">
+            <div>🤍</div>
+            <span>ILLUST COMING SOON</span>
+          </div>
+        </div>
+        <div class="char-card__body">
+          <p class="char-card__name-en">Mishiro</p>
+          <p class="char-card__name-ja">御子柴みしろ</p>
+          <div class="char-card__tags">
+            <span class="char-tag">銀髪</span>
+            <span class="char-tag">元気</span>
+            <span class="char-tag">素直</span>
+          </div>
+          <p class="char-card__desc">
+            テンション高めで真っ直ぐな性格の女の子。
+            好奇心旺盛で、いつも前のめりに突っ込んでいく。
+            あなたに興味津々。
+          </p>
+          <p class="char-card__voice">VOICE — ナースロボ＿タイプT（楽々）</p>
+        </div>
+      </div>
+
+      <!-- みくろ -->
+      <div class="char-card char-card--mikuro reveal">
+        <div class="char-card__visual">
+          <div class="char-card__visual-placeholder">
+            <div>🖤</div>
+            <span>ILLUST COMING SOON</span>
+          </div>
+        </div>
+        <div class="char-card__body">
+          <p class="char-card__name-en">Mikuro</p>
+          <p class="char-card__name-ja">御子柴みくろ</p>
+          <div class="char-card__tags">
+            <span class="char-tag">黒髪</span>
+            <span class="char-tag">クール</span>
+            <span class="char-tag">ミステリアス</span>
+          </div>
+          <p class="char-card__desc">
+            テンション低めで無口なクールガール。
+            でも、ときどきぽつりと本音を漏らす。
+            あまりこっちには来てくれないが、興味ある話なら反応してくれるかも。
+          </p>
+          <p class="char-card__voice">VOICE — ナースロボ＿タイプT（ノーマル）</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================
+       DEBUT
+  ============================== -->
+  <section class="debut-section reveal" id="debut">
+    <div class="section-inner">
+      <span class="debut-badge">Debut</span>
+      <h2 class="debut-title">双子、まもなく旅立ち。</h2>
+      <p class="debut-date">5 · 5 · 2026</p>
+      <p class="debut-copy">
+        お披露目配信・詳細は<br>
+        X（@MikoshibaShige）にて発表予定。
+      </p>
+      <div class="debut-links">
+        <a class="contact__btn contact__btn--x"
+           href="https://x.com/MikoshibaShige"
+           target="_blank" rel="noopener noreferrer">
+          X でフォローする
+        </a>
+        <a class="contact__btn contact__btn--form"
+           href="https://www.youtube.com/@shigechanwanko"
+           target="_blank" rel="noopener noreferrer"
+           style="background: #FF0000;">
+          ▶ YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p class="footer__copy">© 御子柴しげ / AtelierInuPunch</p>
+    <div class="footer__sns">
+      <a href="https://www.youtube.com/@shigechanwanko" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+      <a href="https://x.com/MikoshibaShige"            target="_blank" rel="noopener noreferrer">✕ X</a>
+      <a href="https://shigewanchan.fanbox.cc/"          target="_blank" rel="noopener noreferrer">★ FANBOX</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

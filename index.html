@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Shige | Border &amp; Beyond</title>
+  <meta name="description" content="VTuber・クリエイター御子柴しげのポートフォリオ。映像・グラフィック・Webデザイン・VRoid衣装制作。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 右下固定マスコット (dotpict GIF) -->
+  <img class="mascot-sticky"
+       src="assets/characters/dot/dotpict_animation_20260107_115826.gif"
+       alt="しげちゃん">
+
+  <!-- ナビゲーション -->
+  <nav class="site-nav">
+    <a class="site-nav__logo" href="#">Atelier Shige</a>
+    <ul class="site-nav__links">
+      <li><a href="#works">WORKS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="twins.html">TWINS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==============================
+       HERO — パスポート + チケット差し込み
+  ============================== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg"></div>
+
+    <div class="hero-spread">
+
+      <!-- ===== STICKERS（外側に散らばる） ===== -->
+      <div class="sticker sticker--circle sticker--pink"
+           style="--tx:-55px; --ty:50px; --r:-14deg">VIDEO</div>
+      <div class="sticker sticker--pill sticker--blue"
+           style="--tx:700px; --ty:10px; --r:9deg">WEB DESIGN</div>
+      <div class="sticker sticker--badge sticker--purple"
+           style="--tx:740px; --ty:210px; --r:-7deg">GRAPHIC<br>DESIGN</div>
+      <div class="sticker sticker--circle sticker--orange"
+           style="--tx:710px; --ty:430px; --r:12deg">3D</div>
+      <div class="sticker sticker--pill sticker--brown"
+           style="--tx:-65px; --ty:300px; --r:-10deg">SCENARIO</div>
+      <div class="sticker sticker--badge sticker--green"
+           style="--tx:-30px; --ty:460px; --r:6deg">MUSIC</div>
+
+      <!-- ===== PASSPORT（ID面・スタンプ1個） ===== -->
+      <div class="passport">
+        <p class="passport__header-text">CREATIVE PASSPORT</p>
+        <div class="passport__photo-frame">
+          <img class="passport__chara"
+               src="assets/characters/sd/sd_normal_stand.png"
+               alt="御子柴しげ">
+        </div>
+        <div class="passport__info">
+          <p class="passport__label">HOLDER</p>
+          <p class="passport__value">Shige Mikoshiba</p>
+          <p class="passport__label">ISSUED AT</p>
+          <p class="passport__value">Japan / Story Worlds</p>
+          <p class="passport__label">VALID UNTIL</p>
+          <p class="passport__value">Forever</p>
+        </div>
+        <div class="passport__stamp-area">
+          <div class="stamp stamp--pink">
+            <span class="stamp__label">BORDER</span>
+            <span class="stamp__icon">🐾</span>
+            <span class="stamp__date">MAR · 2026</span>
+          </div>
+        </div>
+        <p class="passport__tagline">Border &amp; Beyond</p>
+      </div>
+
+      <!-- ===== TICKETS（差し込み型・4枚） ===== -->
+      <div class="tickets">
+
+        <a class="ticket ticket--scenario" href="#works" style="--r:2deg">
+          <div class="ticket__main">
+            <div class="ticket__top">
+              <span class="ticket__flight">FL-001</span>
+              <span class="ticket__plane">✈</span>
+            </div>
+            <p class="ticket__dest">SCENARIO WORLD</p>
+            <p class="ticket__sub">Murder Mystery · TRPG</p>
+            <div class="ticket__bottom">
+              <div><p class="ticket__meta-label">FROM</p><p class="ticket__meta-val">Story World</p></div>
+              <div><p class="ticket__meta-label">BOARDING</p><p class="ticket__meta-val">NOW</p></div>
+            </div>
+          </div>
+          <div class="ticket__stub">
+            <p class="ticket__stub-label">SCENARIO</p>
+            <div class="ticket__barcode"></div>
+          </div>
+        </a>
+
+        <a class="ticket ticket--video" href="#works" style="--r:-3deg">
+          <div class="ticket__main">
+            <div class="ticket__top">
+              <span class="ticket__flight">FL-002</span>
+              <span class="ticket__plane">✈</span>
+            </div>
+            <p class="ticket__dest">VIDEO REALM</p>
+            <p class="ticket__sub">Thumbnail · Motion Graphics</p>
+            <div class="ticket__bottom">
+              <div><p class="ticket__meta-label">FROM</p><p class="ticket__meta-val">Story World</p></div>
+              <div><p class="ticket__meta-label">BOARDING</p><p class="ticket__meta-val">NOW</p></div>
+            </div>
+          </div>
+          <div class="ticket__stub">
+            <p class="ticket__stub-label">VIDEO</p>
+            <div class="ticket__barcode"></div>
+          </div>
+        </a>
+
+        <a class="ticket ticket--web" href="#works" style="--r:1.5deg">
+          <div class="ticket__main">
+            <div class="ticket__top">
+              <span class="ticket__flight">FL-003</span>
+              <span class="ticket__plane">✈</span>
+            </div>
+            <p class="ticket__dest">WEB DIMENSION</p>
+            <p class="ticket__sub">Web Design · LP</p>
+            <div class="ticket__bottom">
+              <div><p class="ticket__meta-label">FROM</p><p class="ticket__meta-val">Story World</p></div>
+              <div><p class="ticket__meta-label">BOARDING</p><p class="ticket__meta-val">NOW</p></div>
+            </div>
+          </div>
+          <div class="ticket__stub">
+            <p class="ticket__stub-label">WEB</p>
+            <div class="ticket__barcode"></div>
+          </div>
+        </a>
+
+        <a class="ticket ticket--design" href="#works" style="--r:-2deg">
+          <div class="ticket__main">
+            <div class="ticket__top">
+              <span class="ticket__flight">FL-004</span>
+              <span class="ticket__plane">✈</span>
+            </div>
+            <p class="ticket__dest">DESIGN STUDIO</p>
+            <p class="ticket__sub">Graphic · Signage · Banner</p>
+            <div class="ticket__bottom">
+              <div><p class="ticket__meta-label">FROM</p><p class="ticket__meta-val">Story World</p></div>
+              <div><p class="ticket__meta-label">BOARDING</p><p class="ticket__meta-val">NOW</p></div>
+            </div>
+          </div>
+          <div class="ticket__stub">
+            <p class="ticket__stub-label">DESIGN</p>
+            <div class="ticket__barcode"></div>
+          </div>
+        </a>
+
+      </div><!-- /tickets -->
+
+    </div><!-- /hero-spread -->
+  </section>
+
+  <!-- ==============================
+       ABOUT
+  ============================== -->
+  <section class="about reveal" id="about">
+    <div class="section-inner">
+      <h2 class="section-title">About</h2>
+      <p class="about__copy">
+        ボーダーコリーの擬人化VTuber。<br>
+        映像・グラフィック・Webデザイン・3Dモデリングを手がける、旅するクリエイター。<br><br>
+        架空の世界も、現実の世界も。<br>
+        あなたの物語を、形にします。
+      </p>
+      <a href="about.html" class="contact__btn contact__btn--form"
+         style="display:inline-block; margin-top: 4px;">
+        プロフィールを見る →
+      </a>
+    </div>
+  </section>
+
+  <!-- ==============================
+       WORKS — Worldwalker's Log
+  ============================== -->
+  <section class="works" id="works">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Worldwalker's Log</h2>
+      <p class="section-sub reveal">世界の断片 / Fragments of Worlds</p>
+
+      <div class="works__grid">
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--video">VIDEO</div>
+          <img class="card__img"
+               src="assets/portfolio/Youtubeサムネイル0217-flame.png"
+               alt="クトゥルフ神話TRPG YouTubeサムネイル">
+          <div class="card__body">
+            <p class="card__category">映像 / Video</p>
+            <h3 class="card__title">クトゥルフ神話TRPG 配信サムネイル</h3>
+            <p class="card__desc">江戸と未来が交差する物語。劇画調の世界観を16:9サムネイルで表現。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">DESIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/Twitter告知画像映画ポスター最終稿0421.png"
+               alt="クトゥルフ神話TRPG Twitter告知画像">
+          <div class="card__body">
+            <p class="card__category">グラフィック / Graphics</p>
+            <h3 class="card__title">クトゥルフ神話TRPG 告知ビジュアル</h3>
+            <p class="card__desc">映画ポスターをモチーフにした配信告知画像。X（Twitter）用。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--web">WEB</div>
+          <img class="card__img"
+               src="assets/portfolio/escape.id_guide_.png"
+               alt="escape.guide Webデザイン">
+          <div class="card__body">
+            <p class="card__category">Webデザイン / Web Design</p>
+            <h3 class="card__title">escape.guide — 謎解きメディア</h3>
+            <p class="card__desc">謎解きプラットフォーム「escape.id」のWebメディアデザイン。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">SIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/看板1.jpeg"
+               alt="JOLDEENO 看板デザイン">
+          <div class="card__body">
+            <p class="card__category">サイン / Signage</p>
+            <h3 class="card__title">JOLDEENO 吉祥寺マチナカ店 看板</h3>
+            <p class="card__desc">マーダーミステリー専門店の店頭看板。実際に設置されている実績あり。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">SIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/看板2.jpeg"
+               alt="JOLDEENO ロゴサイネージ">
+          <div class="card__body">
+            <p class="card__category">サイン / Signage</p>
+            <h3 class="card__title">JOLDEENO ロゴサイネージ</h3>
+            <p class="card__desc">「マーダーミステリーの秘密基地」を体現したロゴ展示サイネージ。</p>
+          </div>
+        </article>
+
+
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=jZBWZ7eT5d8" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/キュートなカノジョ.png"
+               alt="キュートなカノジョ 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">キュートなカノジョ</h3>
+            <p class="card__desc">ポップでキュートな世界観を声に乗せたカバー曲。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=6AmS0DiTmQs" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/カレシのジュード.png"
+               alt="カレシのジュード 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">カレシのジュード</h3>
+            <p class="card__desc">独特のリズム感と病み要素をしげちゃんの声で表現したカバー。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=_yooyOcqGXg" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/ヒプノシスマイク.png"
+               alt="ヒプノシスマイク 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">ヒプノシスマイク</h3>
+            <p class="card__desc">様々な歌い手さんとのコラボ企画。伊弉冉一二三役として参加。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=D60fLoZZCzc" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/レースとシロガネ.jpg"
+               alt="レースとシロガネ オリジナル曲">
+          <div class="card__body">
+            <p class="card__category">オリジナル / Original</p>
+            <h3 class="card__title">レースとシロガネ</h3>
+            <p class="card__desc">r0yさん作曲・楽曲提供。作詞・歌唱を担当したオリジナル曲。</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       JOURNAL — Research Log
+  ============================== -->
+  <section class="journal" id="journal">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Research Log</h2>
+      <p class="section-sub reveal">旅の研究録 — 新しい魔法（スキル）の習得記録</p>
+      <div class="works__grid" style="margin-top:48px;">
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--3d">3D</div>
+          <img class="card__img"
+               src="assets/vroid/通常衣装.png"
+               alt="御子柴しげ VRoid通常衣装">
+          <div class="card__body">
+            <p class="card__category">3D / VRoid</p>
+            <h3 class="card__title">御子柴しげ — 通常衣装</h3>
+            <p class="card__desc">VRoid Studioで自作したケモノ擬人化衣装。ケープ・ブラウス・スカートのシックなロリータスタイル。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--3d">3D</div>
+          <img class="card__img"
+               src="assets/vroid/アイドル衣装.png"
+               alt="御子柴しげ VRoidアイドル衣装">
+          <div class="card__body">
+            <p class="card__category">3D / VRoid</p>
+            <h3 class="card__title">御子柴しげ — アイドル衣装</h3>
+            <p class="card__desc">深紅をモチーフに、天使の片翼・クリノリンなど華やかなモチーフを纏った派手系ロリータ衣装。</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       CONTACT — Commission
+  ============================== -->
+  <section class="contact reveal" id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Commission</h2>
+      <p class="contact__copy">
+        秘密基地の建設依頼、お待ちしています。<br>
+        映像・グラフィック・Webデザイン・VRoid衣装など、お気軽にご相談ください。
+      </p>
+      <div class="contact__links">
+        <a class="contact__btn contact__btn--form"
+           href="https://forms.gle/uYsr33NqWrV9TN6FA"
+           target="_blank" rel="noopener noreferrer">
+          依頼フォームを開く
+        </a>
+        <!-- メールはJSで生成（スパムボット対策） -->
+        <span id="email-link"></span>
+        <a class="contact__btn contact__btn--x"
+           href="https://x.com/MikoshibaShige"
+           target="_blank" rel="noopener noreferrer">
+          X でメッセージ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p class="footer__copy">© 御子柴しげ / AtelierInuPunch</p>
+    <div class="footer__sns">
+      <a href="https://www.youtube.com/@shigechanwanko" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+      <a href="https://x.com/MikoshibaShige" target="_blank" rel="noopener noreferrer">✕ X</a>
+      <a href="https://shigewanchan.fanbox.cc/" target="_blank" rel="noopener noreferrer">★ FANBOX</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
