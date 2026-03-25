@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Works | Atelier Shige</title>
+  <meta name="description" content="御子柴しげの全実績一覧。映像・グラフィック・Webデザイン・VRoid衣装制作・歌ってみた。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Modal — 実績詳細 ---- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.is-open { display: flex; }
+    .modal-box {
+      background: var(--white-base);
+      border-radius: 12px;
+      max-width: 760px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    }
+    .modal-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .modal-body {
+      padding: 28px 32px 36px;
+    }
+    .modal-category {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .modal-desc {
+      font-size: 0.88rem;
+      line-height: 2;
+      opacity: 0.75;
+    }
+    .modal-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 510;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { background: var(--shige-pink); color: #fff; }
+    article.card { cursor: pointer; }
+
+    /* ---- ページヘッダー ---- */
+    .page-header {
+      padding: 120px 40px 60px;
+      text-align: center;
+    }
+    .page-header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      opacity: 0.45;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 28px;
+      transition: opacity 0.15s;
+    }
+    .page-header__back:hover { opacity: 0.8; }
+
+    @media (max-width: 600px) {
+      .modal-body { padding: 20px 20px 28px; }
+      .modal-title { font-size: 1.1rem; }
+      .page-header { padding: 100px 20px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 右下固定マスコット (dotpict GIF) -->
+  <img class="mascot-sticky"
+       src="assets/characters/dot/dotpict_animation_20260107_115826.gif"
+       alt="しげちゃん">
+
+  <!-- ナビゲーション -->
+  <nav class="site-nav">
+    <a class="site-nav__logo" href="index.html">Atelier Shige</a>
+    <ul class="site-nav__links">
+      <li><a href="index.html#works">WORKS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="twins.html">TWINS</a></li>
+      <li><a href="index.html#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- ページヘッダー -->
+  <div class="page-header">
+    <a class="page-header__back" href="index.html">← トップへ戻る</a>
+    <h1 class="section-title" style="font-size: clamp(1.6rem, 4vw, 2.4rem);">All Works</h1>
+    <p class="section-sub" style="margin-top:12px;">すべての実績 / Full Portfolio</p>
+  </div>
+
+  <!-- ==============================
+       WORKS — すべての実績
+  ============================== -->
+  <section class="works" id="works" style="padding-top: 0;">
+    <div class="section-inner">
+      <div class="works__grid">
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--video">VIDEO</div>
+          <img class="card__img"
+               src="assets/portfolio/Youtubeサムネイル0217-flame.png"
+               alt="クトゥルフ神話TRPG YouTubeサムネイル">
+          <div class="card__body">
+            <p class="card__category">映像 / Video</p>
+            <h3 class="card__title">クトゥルフ神話TRPG 配信サムネイル</h3>
+            <p class="card__desc">江戸と未来が交差する物語。劇画調の世界観を16:9サムネイルで表現。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">DESIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/Twitter告知画像映画ポスター最終稿0421.png"
+               alt="クトゥルフ神話TRPG Twitter告知画像">
+          <div class="card__body">
+            <p class="card__category">グラフィック / Graphics</p>
+            <h3 class="card__title">クトゥルフ神話TRPG 告知ビジュアル</h3>
+            <p class="card__desc">映画ポスターをモチーフにした配信告知画像。X（Twitter）用。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--web">WEB</div>
+          <img class="card__img"
+               src="assets/portfolio/escape.id_guide_.png"
+               alt="escape.guide Webデザイン">
+          <div class="card__body">
+            <p class="card__category">Webデザイン / Web Design</p>
+            <h3 class="card__title">escape.guide — 謎解きメディア</h3>
+            <p class="card__desc">謎解きプラットフォーム「escape.id」のWebメディアデザイン。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">SIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/看板1.jpeg"
+               alt="JOLDEENO 看板デザイン">
+          <div class="card__body">
+            <p class="card__category">サイン / Signage</p>
+            <h3 class="card__title">JOLDEENO 吉祥寺マチナカ店 看板</h3>
+            <p class="card__desc">マーダーミステリー専門店の店頭看板。実際に設置されている実績あり。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--design">SIGN</div>
+          <img class="card__img"
+               src="assets/portfolio/看板2.jpeg"
+               alt="JOLDEENO ロゴサイネージ">
+          <div class="card__body">
+            <p class="card__category">サイン / Signage</p>
+            <h3 class="card__title">JOLDEENO ロゴサイネージ</h3>
+            <p class="card__desc">「マーダーミステリーの秘密基地」を体現したロゴ展示サイネージ。</p>
+          </div>
+        </article>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=jZBWZ7eT5d8" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/キュートなカノジョ.png"
+               alt="キュートなカノジョ 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">キュートなカノジョ</h3>
+            <p class="card__desc">ポップでキュートな世界観を声に乗せたカバー曲。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=6AmS0DiTmQs" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/カレシのジュード.png"
+               alt="カレシのジュード 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">カレシのジュード</h3>
+            <p class="card__desc">独特のリズム感と病み要素をしげちゃんの声で表現したカバー。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=_yooyOcqGXg" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/ヒプノシスマイク.png"
+               alt="ヒプノシスマイク 歌ってみた">
+          <div class="card__body">
+            <p class="card__category">歌ってみた / Cover</p>
+            <h3 class="card__title">ヒプノシスマイク</h3>
+            <p class="card__desc">様々な歌い手さんとのコラボ企画。伊弉冉一二三役として参加。</p>
+          </div>
+        </a>
+
+        <a class="card reveal" href="https://www.youtube.com/watch?v=D60fLoZZCzc" target="_blank" rel="noopener noreferrer">
+          <div class="card__stamp card__stamp--music">MUSIC</div>
+          <img class="card__img"
+               src="assets/utattemita/レースとシロガネ.jpg"
+               alt="レースとシロガネ オリジナル曲">
+          <div class="card__body">
+            <p class="card__category">オリジナル / Original</p>
+            <h3 class="card__title">レースとシロガネ</h3>
+            <p class="card__desc">r0yさん作曲・楽曲提供。作詞・歌唱を担当したオリジナル曲。</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       JOURNAL — Research Log
+  ============================== -->
+  <section class="journal" id="journal">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Research Log</h2>
+      <p class="section-sub reveal">旅の研究録 — 新しい魔法（スキル）の習得記録</p>
+      <div class="works__grid" style="margin-top:48px;">
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--3d">3D</div>
+          <img class="card__img"
+               src="assets/vroid/通常衣装.png"
+               alt="御子柴しげ VRoid通常衣装">
+          <div class="card__body">
+            <p class="card__category">3D / VRoid</p>
+            <h3 class="card__title">御子柴しげ — 通常衣装</h3>
+            <p class="card__desc">VRoid Studioで自作したケモノ擬人化衣装。ケープ・ブラウス・スカートのシックなロリータスタイル。</p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__stamp card__stamp--3d">3D</div>
+          <img class="card__img"
+               src="assets/vroid/アイドル衣装.png"
+               alt="御子柴しげ VRoidアイドル衣装">
+          <div class="card__body">
+            <p class="card__category">3D / VRoid</p>
+            <h3 class="card__title">御子柴しげ — アイドル衣装</h3>
+            <p class="card__desc">深紅をモチーフに、天使の片翼・クリノリンなど華やかなモチーフを纏った派手系ロリータ衣装。</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p class="footer__copy">© 御子柴しげ / AtelierInuPunch</p>
+    <div class="footer__sns">
+      <a href="https://www.youtube.com/@shigechanwanko" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+      <a href="https://x.com/MikoshibaShige" target="_blank" rel="noopener noreferrer">✕ X</a>
+      <a href="https://shigewanchan.fanbox.cc/" target="_blank" rel="noopener noreferrer">★ FANBOX</a>
+    </div>
+  </footer>
+
+  <!-- モーダル（実績詳細） -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
+    <div class="modal-box">
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-body">
+        <p class="modal-category" id="modal-category"></p>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

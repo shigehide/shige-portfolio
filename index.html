@@ -9,6 +9,85 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Modal — 実績詳細 ---- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.is-open { display: flex; }
+    .modal-box {
+      background: var(--white-base);
+      border-radius: 12px;
+      max-width: 760px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    }
+    .modal-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .modal-body {
+      padding: 28px 32px 36px;
+    }
+    .modal-category {
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .modal-desc {
+      font-size: 0.88rem;
+      line-height: 2;
+      opacity: 0.75;
+    }
+    .modal-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 510;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { background: var(--shige-pink); color: #fff; }
+    article.card { cursor: pointer; }
+    @media (max-width: 600px) {
+      .modal-body { padding: 20px 20px 28px; }
+      .modal-title { font-size: 1.1rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -36,19 +115,43 @@
 
     <div class="hero-spread">
 
-      <!-- ===== STICKERS（外側に散らばる） ===== -->
-      <div class="sticker sticker--circle sticker--pink"
-           style="--tx:-55px; --ty:50px; --r:-14deg">VIDEO</div>
+      <!-- ===== STICKERS（ソリッドカラー・旅行ステッカー風） ===== -->
+      <!-- VIDEO: oval, ピンク, 左上 -->
+      <div class="sticker sticker--oval sticker--pink"
+           style="--tx:-68px; --ty:28px; --r:-14deg">
+        <span class="sticker__icon">✈</span>
+        <span class="sticker__line"></span>
+        <span>VIDEO</span>
+      </div>
+      <!-- WEB DESIGN: pill, ブルー, 右上 -->
       <div class="sticker sticker--pill sticker--blue"
-           style="--tx:700px; --ty:10px; --r:9deg">WEB DESIGN</div>
+           style="--tx:680px; --ty:4px; --r:9deg">◎ WEB DESIGN</div>
+      <!-- GRAPHIC DESIGN: badge, パープル, 右中 -->
       <div class="sticker sticker--badge sticker--purple"
-           style="--tx:740px; --ty:210px; --r:-7deg">GRAPHIC<br>DESIGN</div>
+           style="--tx:714px; --ty:215px; --r:-7deg">
+        GRAPHIC
+        <span class="sticker__line"></span>
+        DESIGN
+      </div>
+      <!-- 3D MODEL: circle, オレンジ, 右下 -->
       <div class="sticker sticker--circle sticker--orange"
-           style="--tx:710px; --ty:430px; --r:12deg">3D</div>
-      <div class="sticker sticker--pill sticker--brown"
-           style="--tx:-65px; --ty:300px; --r:-10deg">SCENARIO</div>
-      <div class="sticker sticker--badge sticker--green"
-           style="--tx:-30px; --ty:460px; --r:6deg">MUSIC</div>
+           style="--tx:708px; --ty:415px; --r:12deg">
+        <span>3D</span>
+        <span class="sticker__line"></span>
+        <span style="font-size:0.52rem; letter-spacing:0.06em">MODEL</span>
+      </div>
+      <!-- SCENARIO: badge, ブラウン, 左中 -->
+      <div class="sticker sticker--badge sticker--brown"
+           style="--tx:-82px; --ty:295px; --r:-10deg">
+        ★ SCENARIO ★
+      </div>
+      <!-- MUSIC: oval, グリーン, 左下 -->
+      <div class="sticker sticker--oval sticker--green"
+           style="--tx:-55px; --ty:455px; --r:7deg">
+        <span class="sticker__icon">♪</span>
+        <span class="sticker__line"></span>
+        <span>MUSIC</span>
+      </div>
 
       <!-- ===== PASSPORT（ID面・スタンプ1個） ===== -->
       <div class="passport">
@@ -67,7 +170,7 @@
           <p class="passport__value">Forever</p>
         </div>
         <div class="passport__stamp-area">
-          <div class="stamp stamp--pink">
+          <div class="stamp stamp--cream">
             <span class="stamp__label">BORDER</span>
             <span class="stamp__icon">🐾</span>
             <span class="stamp__date">MAR · 2026</span>
@@ -237,20 +340,6 @@
           </div>
         </article>
 
-        <article class="card reveal">
-          <div class="card__stamp card__stamp--design">SIGN</div>
-          <img class="card__img"
-               src="assets/portfolio/看板2.jpeg"
-               alt="JOLDEENO ロゴサイネージ">
-          <div class="card__body">
-            <p class="card__category">サイン / Signage</p>
-            <h3 class="card__title">JOLDEENO ロゴサイネージ</h3>
-            <p class="card__desc">「マーダーミステリーの秘密基地」を体現したロゴ展示サイネージ。</p>
-          </div>
-        </article>
-
-
-
         <a class="card reveal" href="https://www.youtube.com/watch?v=jZBWZ7eT5d8" target="_blank" rel="noopener noreferrer">
           <div class="card__stamp card__stamp--music">MUSIC</div>
           <img class="card__img"
@@ -260,30 +349,6 @@
             <p class="card__category">歌ってみた / Cover</p>
             <h3 class="card__title">キュートなカノジョ</h3>
             <p class="card__desc">ポップでキュートな世界観を声に乗せたカバー曲。</p>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://www.youtube.com/watch?v=6AmS0DiTmQs" target="_blank" rel="noopener noreferrer">
-          <div class="card__stamp card__stamp--music">MUSIC</div>
-          <img class="card__img"
-               src="assets/utattemita/カレシのジュード.png"
-               alt="カレシのジュード 歌ってみた">
-          <div class="card__body">
-            <p class="card__category">歌ってみた / Cover</p>
-            <h3 class="card__title">カレシのジュード</h3>
-            <p class="card__desc">独特のリズム感と病み要素をしげちゃんの声で表現したカバー。</p>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://www.youtube.com/watch?v=_yooyOcqGXg" target="_blank" rel="noopener noreferrer">
-          <div class="card__stamp card__stamp--music">MUSIC</div>
-          <img class="card__img"
-               src="assets/utattemita/ヒプノシスマイク.png"
-               alt="ヒプノシスマイク 歌ってみた">
-          <div class="card__body">
-            <p class="card__category">歌ってみた / Cover</p>
-            <h3 class="card__title">ヒプノシスマイク</h3>
-            <p class="card__desc">様々な歌い手さんとのコラボ企画。伊弉冉一二三役として参加。</p>
           </div>
         </a>
 
@@ -300,43 +365,15 @@
         </a>
 
       </div>
-    </div>
-  </section>
 
-  <!-- ==============================
-       JOURNAL — Research Log
-  ============================== -->
-  <section class="journal" id="journal">
-    <div class="section-inner">
-      <h2 class="section-title reveal">Research Log</h2>
-      <p class="section-sub reveal">旅の研究録 — 新しい魔法（スキル）の習得記録</p>
-      <div class="works__grid" style="margin-top:48px;">
-
-        <article class="card reveal">
-          <div class="card__stamp card__stamp--3d">3D</div>
-          <img class="card__img"
-               src="assets/vroid/通常衣装.png"
-               alt="御子柴しげ VRoid通常衣装">
-          <div class="card__body">
-            <p class="card__category">3D / VRoid</p>
-            <h3 class="card__title">御子柴しげ — 通常衣装</h3>
-            <p class="card__desc">VRoid Studioで自作したケモノ擬人化衣装。ケープ・ブラウス・スカートのシックなロリータスタイル。</p>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card__stamp card__stamp--3d">3D</div>
-          <img class="card__img"
-               src="assets/vroid/アイドル衣装.png"
-               alt="御子柴しげ VRoidアイドル衣装">
-          <div class="card__body">
-            <p class="card__category">3D / VRoid</p>
-            <h3 class="card__title">御子柴しげ — アイドル衣装</h3>
-            <p class="card__desc">深紅をモチーフに、天使の片翼・クリノリンなど華やかなモチーフを纏った派手系ロリータ衣装。</p>
-          </div>
-        </article>
-
+      <!-- もっと見るボタン -->
+      <div class="reveal" style="text-align:center; margin-top:48px;">
+        <a href="works.html" class="contact__btn contact__btn--form"
+           style="display:inline-block;">
+          もっと見る →
+        </a>
       </div>
+
     </div>
   </section>
 
@@ -347,7 +384,8 @@
     <div class="section-inner">
       <h2 class="section-title">Commission</h2>
       <p class="contact__copy">
-        秘密基地の建設依頼、お待ちしています。<br>
+        「形にしたい」が、あるなら。<br>
+        好奇心のままに、なんでも作ります。<br>
         映像・グラフィック・Webデザイン・VRoid衣装など、お気軽にご相談ください。
       </p>
       <div class="contact__links">
@@ -376,6 +414,19 @@
       <a href="https://shigewanchan.fanbox.cc/" target="_blank" rel="noopener noreferrer">★ FANBOX</a>
     </div>
   </footer>
+
+  <!-- モーダル（実績詳細） -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
+    <div class="modal-box">
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-body">
+        <p class="modal-category" id="modal-category"></p>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
