@@ -289,6 +289,13 @@ a {
 .stamp--orange { color: #d4893a;              background: rgba(255,179,71, 0.1); }
 .stamp--brown  { color: var(--cocoa-brown);   background: rgba(160,120,80, 0.1); }
 .stamp--green  { color: #6aaa6a;              background: rgba(168,216,168,0.1); }
+/* 紺背景用：クリーム/パーチメント（パスポート内スタンプ専用） */
+.stamp--cream  { color: #f0e0c0;              background: rgba(240,224,192,0.12); }
+/* 絵文字は color を無視するので白反転フィルターで対応 */
+.stamp--cream .stamp__icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+}
 
 /* ============================================================
    TICKETS（差し込み型・4枚）
@@ -426,54 +433,101 @@ a {
 }
 
 /* ============================================================
-   STICKERS（各種形状・散らばり）
+   STICKERS（ソリッド塗り・旅行ステッカー風・内側デコ）
 ============================================================ */
 .sticker {
   position: absolute;
-  z-index: 2;  /* パスポート(10)・チケット(5)より後ろ */
+  z-index: 2;
   transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--r, 0deg));
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.3;
-  border: 2px solid currentColor;
-  padding: 7px 12px;
+  color: #ffffff;
+  /* ソリッド白ボーダー（ステッカー切り抜き縁） */
+  border: 3px solid rgba(255,255,255,0.9);
+  padding: 10px 16px;
   pointer-events: none;
-  opacity: 0.82;
+  opacity: 0.93;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
 }
 
-/* 形状バリエーション */
-.sticker--circle {
-  width: 74px;
-  height: 74px;
+/* 内側デコレーションライン */
+.sticker::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+
+/* 内側の水平セパレーター */
+.sticker__line {
+  display: block;
+  width: 58%;
+  height: 1px;
+  background: rgba(255,255,255,0.55);
+  margin: 1px auto;
+  flex-shrink: 0;
+}
+
+/* アイコン行 */
+.sticker__icon {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* ---- 形状 ---- */
+.sticker--oval {
+  width: 150px;
+  height: 102px;
   border-radius: 50%;
   padding: 0;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
 }
+.sticker--oval::before { border-radius: 50%; }
+
+.sticker--circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 0.74rem;
+}
+.sticker--circle::before { border-radius: 50%; }
+
 .sticker--pill {
   border-radius: 100px;
-  padding: 6px 16px;
+  padding: 12px 26px;
   white-space: nowrap;
+  font-size: 0.8rem;
 }
-.sticker--badge {
-  border-radius: 6px;
-  padding: 7px 12px;
-  font-size: 0.7rem;
-}
+.sticker--pill::before { border-radius: 100px; }
 
-/* カラー */
-.sticker--pink   { color: var(--shige-pink);    background: rgba(244,167,185,0.12); }
-.sticker--blue   { color: #5aabcb;              background: rgba(126,200,227,0.12); }
-.sticker--purple { color: var(--purple-accent); background: rgba(184,169,220,0.12); }
-.sticker--orange { color: #d4893a;              background: rgba(255,179,71, 0.12); }
-.sticker--brown  { color: var(--cocoa-brown);   background: rgba(160,120,80, 0.12); }
-.sticker--green  { color: #6aaa6a;              background: rgba(168,216,168,0.12); }
+.sticker--badge {
+  border-radius: 8px;
+  padding: 13px 18px;
+  min-width: 108px;
+  font-size: 0.76rem;
+}
+.sticker--badge::before { border-radius: 5px; }
+
+/* ---- カラー（ソリッド塗り・白テキスト） ---- */
+.sticker--pink   { background: #e8789a; }
+.sticker--blue   { background: #4e9dbe; }
+.sticker--purple { background: #8f7dbf; }
+.sticker--orange { background: #c97d2e; }
+.sticker--brown  { background: #8a6540; }
+.sticker--green  { background: #4f9050; }
 
 /* ============================================================
    Section commons

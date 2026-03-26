@@ -197,6 +197,15 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
       margin-top: 52px;
+      align-items: start;
+    }
+
+    /* Activity グリッド（レスポンシブ対応） */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
     }
 
     .like-card {
@@ -326,6 +335,9 @@
       .likes-grid {
         grid-template-columns: 1fr 1fr;
       }
+      .activity-grid {
+        grid-template-columns: 1fr;
+      }
       .about-hero {
         padding: 80px 20px 60px;
       }
@@ -433,7 +445,7 @@
     <div class="section-inner">
       <h2 class="section-title reveal">Activity</h2>
       <p class="section-sub reveal">活動内容</p>
-      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 52px;">
+      <div class="activity-grid">
 
         <div class="like-card reveal" style="border-top: 3px solid var(--shige-pink);">
           <div class="like-card__icon">🎙️</div>
@@ -512,7 +524,7 @@
         <div class="like-card reveal">
           <div class="like-card__icon">📖</div>
           <p class="like-card__label">Manga</p>
-          <p class="like-card__items">エンジェルハント<br>正反対な君と僕<br>氷の城壁<br>忘却バッテリー</p>
+          <p class="like-card__items">正反対な君と僕<br>忘却バッテリー</p>
         </div>
 
       </div>

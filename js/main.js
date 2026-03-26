@@ -96,7 +96,48 @@
   }, { passive: true });
 })();
 
-/* ---------- 4. ナビゲーション: スクロール時に背景強調 ---------- */
+/* ---------- 4. モーダル（実績詳細） ---------- */
+(function () {
+  const overlay  = document.getElementById('modal-overlay');
+  const closeBtn = document.getElementById('modal-close');
+  if (!overlay) return;
+
+  const modalImg      = document.getElementById('modal-img');
+  const modalCategory = document.getElementById('modal-category');
+  const modalTitle    = document.getElementById('modal-title');
+  const modalDesc     = document.getElementById('modal-desc');
+
+  function openModal(card) {
+    const img      = card.querySelector('.card__img');
+    const category = card.querySelector('.card__category');
+    const title    = card.querySelector('.card__title');
+    const desc     = card.querySelector('.card__desc');
+
+    modalImg.src              = img      ? img.src              : '';
+    modalImg.alt              = img      ? img.alt              : '';
+    modalCategory.textContent = category ? category.textContent : '';
+    modalTitle.textContent    = title    ? title.textContent    : '';
+    modalDesc.textContent     = desc     ? desc.textContent     : '';
+
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('article.card').forEach((card) => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+})();
+
+/* ---------- 6. ナビゲーション: スクロール時に背景強調 ---------- */
 (function () {
   const nav = document.querySelector('.site-nav');
   if (!nav) return;
