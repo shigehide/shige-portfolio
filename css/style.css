@@ -754,6 +754,55 @@ a.card:hover::after { opacity: 0.8; }
 }
 
 /* ============================================================
+   TIP — StreamElements 投げ銭
+============================================================ */
+.tip-section {
+  padding: 110px 0;
+  background: var(--white-base);
+  text-align: center;
+}
+.tip-section .section-inner {
+  max-width: 620px;
+}
+
+.tip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(244, 167, 185, 0.3);
+  box-shadow: 0 4px 24px rgba(244, 167, 185, 0.14);
+  padding: 44px 40px 48px;
+  margin-top: 8px;
+}
+
+.tip-card__icon {
+  font-size: 2rem;
+  color: var(--shige-pink);
+  line-height: 1;
+}
+
+.tip-card__copy {
+  font-size: 1rem;
+  line-height: 2.1;
+  opacity: 0.78;
+  color: var(--dark-text);
+}
+
+.contact__btn--tip {
+  background: linear-gradient(135deg, var(--shige-pink) 0%, #e8789a 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 16px 48px;
+  box-shadow: 0 4px 16px rgba(244, 167, 185, 0.38);
+}
+.contact__btn--tip:hover {
+  box-shadow: 0 8px 28px rgba(244, 167, 185, 0.5);
+}
+
+/* ============================================================
    CONTACT
 ============================================================ */
 .contact {
@@ -866,10 +915,19 @@ a.card:hover::after { opacity: 0.8; }
     padding: 14px 20px;
   }
   .site-nav__links {
-    gap: 20px;
+    gap: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-shrink: 1;
+    min-width: 0;
+    padding-bottom: 2px;
   }
+  .site-nav__links::-webkit-scrollbar { display: none; }
+  .site-nav__links li { flex-shrink: 0; }
   .site-nav__links a {
-    font-size: 0.66rem;
+    font-size: 0.62rem;
+    white-space: nowrap;
   }
 
   /* --- Hero --- */
