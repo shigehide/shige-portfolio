@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/gif" href="assets/characters/dot/dotpict_animation_20260107_115826.gif">
+  <title>Scenarios | Atelier InuPunch</title>
+  <meta name="description" content="御子柴しげのシナリオ制作活動。マーダーミステリー作家として2人用・6人用シナリオを制作中。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ============================================================
+       Scenarios page — 専用スタイル
+    ============================================================ */
+
+    /* ---- HERO ---- */
+    .scenario-hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scenario-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 50%, rgba(90,60,140,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 60%, rgba(30,60,100,0.18) 0%, transparent 70%),
+        #f7f7f7;
+      z-index: 0;
+    }
+
+    /* 装飾：コート・ドーツ・ライン */
+    .scenario-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle 1px at 50px 120px, rgba(160,120,80,0.25) 0%, transparent 0%),
+        radial-gradient(circle 1px at 200px 300px, rgba(244,167,185,0.3) 0%, transparent 0%);
+      background-size: 240px 240px;
+      z-index: 0;
+    }
+
+    .scenario-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .scenario-hero__badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border: 1.5px solid var(--cocoa-brown);
+      border-radius: 100px;
+      color: var(--cocoa-brown);
+      margin-bottom: 20px;
+      opacity: 0.75;
+    }
+
+    .scenario-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .scenario-hero__sub {
+      font-size: 0.88rem;
+      line-height: 2;
+      opacity: 0.6;
+      max-width: 480px;
+    }
+
+    /* 右側 — 統計バッジ群 */
+    .scenario-hero__stats {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .stat-badge {
+      background: #ffffff;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      padding: 16px 24px;
+      text-align: center;
+      box-shadow: 2px 4px 18px rgba(0,0,0,0.06);
+      min-width: 120px;
+    }
+
+    .stat-badge__num {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--cocoa-brown);
+    }
+
+    .stat-badge__label {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      opacity: 0.45;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* ---- PROFILE BAND ---- */
+    .profile-band {
+      background: var(--dark-text);
+      color: rgba(255,255,255,0.88);
+      padding: 56px 0;
+    }
+
+    .profile-band__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .profile-item__label {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.38;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-item__label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .profile-item__body {
+      font-size: 0.86rem;
+      line-height: 1.9;
+      opacity: 0.75;
+    }
+
+    .profile-item__body strong {
+      color: var(--shige-pink);
+      opacity: 1;
+    }
+
+    /* ---- SECTION HEADER ---- */
+    .scenario-section {
+      padding: 88px 0 60px;
+    }
+
+    .scenario-section--alt {
+      background: #ffffff;
+    }
+
+    .scenario-section__inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .scenario-section__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .scenario-section__label {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cocoa-brown);
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .scenario-section__title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .scenario-section__sub {
+      font-size: 0.78rem;
+      opacity: 0.45;
+      text-align: right;
+      align-self: flex-end;
+      flex-shrink: 0;
+    }
+
+    /* ---- SCENARIO CARDS GRID ---- */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .scenario-grid--2col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .scenario-card {
+      background: var(--white-base);
+      border: 1.5px solid #e6e6e6;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 2px 4px 18px rgba(0,0,0,0.06);
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scenario-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 4px 16px 40px rgba(160,120,80,0.18);
+    }
+
+    /* カバー（グラデーション） */
+    .scenario-card__cover {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .scenario-card__cover-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 16px;
+      line-height: 1.7;
+    }
+
+    .scenario-card__body {
+      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .scenario-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ステータスバッジ */
+    .badge-status {
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .badge-status--soon {
+      background: rgba(160,120,80,0.12);
+      color: var(--cocoa-brown);
+      border: 1px solid rgba(160,120,80,0.3);
+    }
+
+    .badge-status--dev {
+      background: rgba(184,169,220,0.15);
+      color: #7260a8;
+      border: 1px solid rgba(184,169,220,0.35);
+    }
+
+    .badge-pl {
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      opacity: 0.4;
+      padding: 2px 8px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+    }
+
+    .scenario-card__title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .scenario-card__desc {
+      font-size: 0.78rem;
+      line-height: 1.85;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+
+    /* ---- COMING SOON LIST ---- */
+    .coming-soon-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .coming-soon-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+      background: var(--white-base);
+      border: 1.5px solid #e6e6e6;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+
+    .coming-soon-item__title {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      font-weight: 700;
+      flex-grow: 1;
+    }
+
+    .coming-soon-item__desc {
+      font-size: 0.78rem;
+      opacity: 0.55;
+      flex-basis: 100%;
+      line-height: 1.7;
+      margin-top: 2px;
+    }
+
+    /* ---- TWINS DOOR TEASER ---- */
+    .twins-teaser {
+      background: linear-gradient(135deg, #10182a 0%, #1e2640 50%, #0e1520 100%);
+      padding: 80px 0;
+      color: rgba(255,255,255,0.88);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .twins-teaser::before {
+      content: '双子の扉';
+      position: absolute;
+      font-family: var(--font-serif);
+      font-size: 8rem;
+      font-weight: 700;
+      opacity: 0.04;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+    }
+
+    .twins-teaser__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .twins-teaser__label {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--base-blue);
+      opacity: 0.6;
+      margin-bottom: 14px;
+    }
+
+    .twins-teaser__title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .twins-teaser__copy {
+      font-size: 0.86rem;
+      line-height: 2;
+      opacity: 0.6;
+      max-width: 460px;
+    }
+
+    .twins-teaser__chars {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .twin-chip {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .twin-chip--mishiro {
+      border-color: rgba(126,200,227,0.4);
+      color: rgba(126,200,227,0.9);
+    }
+
+    .twin-chip--mikuro {
+      border-color: rgba(245,200,66,0.35);
+      color: rgba(245,200,66,0.85);
+    }
+
+    /* ---- ACTIVITY HISTORY ---- */
+    .activity-section {
+      padding: 88px 0;
+      background: var(--white-base);
+    }
+
+    .activity-section__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .activity-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 32px;
+    }
+
+    .activity-table th {
+      text-align: left;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.35;
+      padding: 0 16px 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .activity-table td {
+      padding: 14px 16px 14px 0;
+      font-size: 0.83rem;
+      line-height: 1.65;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      vertical-align: top;
+    }
+
+    .activity-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .activity-table .col-year {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--cocoa-brown);
+      white-space: nowrap;
+      width: 90px;
+    }
+
+    .activity-table .col-type {
+      width: 120px;
+    }
+
+    .activity-label {
+      display: inline-block;
+      font-size: 0.58rem;
+      padding: 2px 9px;
+      border-radius: 100px;
+      border: 1.5px solid currentColor;
+      letter-spacing: 0.08em;
+    }
+
+    .activity-label--gm     { color: var(--cocoa-brown); }
+    .activity-label--write  { color: var(--purple-accent); }
+    .activity-label--design { color: var(--base-blue); }
+
+    /* ---- CTA BAND ---- */
+    .uzu-band {
+      background: linear-gradient(135deg, #1a2840 0%, #0e1a2e 100%);
+      padding: 64px 0;
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+    }
+
+    .uzu-band__inner {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .uzu-band__label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #7ecff0;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    .uzu-band__title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .uzu-band__copy {
+      font-size: 0.84rem;
+      line-height: 2;
+      opacity: 0.55;
+      margin-bottom: 32px;
+    }
+
+    .uzu-btn {
+      display: inline-block;
+      padding: 14px 44px;
+      border-radius: 100px;
+      background: #7ecff0;
+      color: #0e1a2e;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
+    }
+
+    .uzu-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(126,207,240,0.35);
+    }
+
+    /* ---- ページヘッダー ---- */
+    .page-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.15s;
+      margin-bottom: 24px;
+    }
+    .page-back:hover { opacity: 0.75; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .scenario-hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 36px;
+      }
+      .scenario-hero__stats {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .scenario-hero__sub {
+        margin: 0 auto;
+      }
+      .profile-band__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .scenario-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .twins-teaser__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+      }
+      .twins-teaser__chars {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .scenario-section__header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .scenario-section__sub {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .scenario-hero { padding: 100px 20px 60px; }
+      .scenario-grid  { grid-template-columns: 1fr; }
+      .scenario-grid--2col { grid-template-columns: 1fr; }
+      .scenario-section__inner { padding: 0 20px; }
+      .profile-band__inner { padding: 0 20px; }
+      .activity-section__inner { padding: 0 20px; }
+      .twins-teaser__inner { padding: 0 20px; }
+      .uzu-band__inner { padding: 0 20px; }
+      .twins-teaser::before { display: none; }
+      .activity-table .col-type { display: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 右下固定マスコット (dotpict GIF) -->
+  <img class="mascot-sticky"
+       src="assets/characters/dot/dotpict_animation_20260107_115826.gif"
+       alt="しげちゃん">
+
+  <!-- ナビゲーション -->
+  <nav class="site-nav">
+    <a class="site-nav__logo" href="index.html">Atelier InuPunch</a>
+    <ul class="site-nav__links">
+      <li><a href="index.html#works">WORKS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="scenarios.html" style="opacity:1; color:var(--cocoa-brown);">SCENARIO</a></li>
+      <li><a href="twins.html">TWINS</a></li>
+      <li><a href="index.html#contact">CONTACT</a></li>
+      <li><a href="contact.html">INQUIRY</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==============================
+       HERO
+  ============================== -->
+  <section class="scenario-hero">
+    <div class="scenario-hero__bg"></div>
+    <div class="scenario-hero__inner">
+      <div>
+        <a class="page-back" href="index.html">← トップへ</a>
+        <div class="scenario-hero__badge">Scenario Writer</div>
+        <h1 class="scenario-hero__title">
+          マーダーミステリー<br>シナリオ作家
+        </h1>
+        <p class="scenario-hero__sub">
+          GM有り大型シナリオから2人用まで、
+          読んでいて「この人に会いたくなる」キャラクターと、
+          ゲームが終わった後も残る感情を設計しています。
+        </p>
+      </div>
+      <div class="scenario-hero__stats">
+        <div class="stat-badge">
+          <div class="stat-badge__num">7+</div>
+          <div class="stat-badge__label">作品数</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-badge__num">2〜6</div>
+          <div class="stat-badge__label">人数帯</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       PROFILE BAND
+  ============================== -->
+  <div class="profile-band">
+    <div class="profile-band__inner">
+
+      <div class="profile-item">
+        <div class="profile-item__label">活動スタイル</div>
+        <div class="profile-item__body">
+          VTuber・コスプレイヤーとしての活動と並行して、
+          マーダーミステリーのシナリオ制作を行っています。
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <div class="profile-item__label">得意ジャンル</div>
+        <div class="profile-item__body">
+          感情設計・対話中心の<strong>ストーリープレイング</strong>。
+          キャラクター間の関係性と、ゲームが終わった後も
+          残るものを大切にしています。
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <div class="profile-item__label">GM活動</div>
+        <div class="profile-item__body">
+          マーダーミステリー専門店<strong>JOLDEENO</strong>にて
+          GMスタッフとして活動。
+          店舗・イベント向け映像制作も担当。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==============================
+       2人用シナリオ
+  ============================== -->
+  <section class="scenario-section scenario-section--alt">
+    <div class="scenario-section__inner">
+
+      <div class="scenario-section__header">
+        <div>
+          <div class="scenario-section__label">2-Player</div>
+          <h2 class="scenario-section__title">2人用シナリオ</h2>
+        </div>
+        <p class="scenario-section__sub">GMなし・2人で遊べる形式</p>
+      </div>
+
+      <ul class="coming-soon-list reveal">
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">黒電話が知っていた</strong>
+          <p class="coming-soon-item__desc">昭和の下宿、一本の黒電話。2人の証言が少しずつ食い違う、記憶と嘘の推理劇。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">遺言書は嘘をつかない（仮）</strong>
+          <p class="coming-soon-item__desc">1970年代の洋館、突然の相続事件。2人の探偵が遺言書の矛盾を追う本格推理。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">贖罪の間取り</strong>
+          <p class="coming-soon-item__desc">ある罪と向き合う2人が、一軒の部屋のなかで互いの正体に近づく、重くて静かな密室劇。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">好きって言えなかった理由</strong>
+          <p class="coming-soon-item__desc">青春の恋と秘密が交差する青い推理劇。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">約束した場所で、待っている</strong>
+          <p class="coming-soon-item__desc">「待つ」ことの意味を問う、静かな感情設計のシナリオ。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--soon">Coming Soon</span>
+          <span class="badge-pl">2人用</span>
+          <strong class="coming-soon-item__title">三年後の教室で</strong>
+          <p class="coming-soon-item__desc">卒業後に再会した2人が、あの事件の真相を辿る青春再会ミステリー。</p>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==============================
+       GM有りレーン（大型）
+  ============================== -->
+  <section class="scenario-section">
+    <div class="scenario-section__inner">
+
+      <div class="scenario-section__header">
+        <div>
+          <div class="scenario-section__label">GM — Multi-Player</div>
+          <h2 class="scenario-section__title">GM有り・店舗・大型シナリオ</h2>
+        </div>
+        <p class="scenario-section__sub">6〜8人・GM付き・本格推理型</p>
+      </div>
+
+      <!-- 少女N — カード -->
+      <div class="scenario-grid reveal" style="grid-template-columns: minmax(0, 420px); margin-bottom: 32px;">
+        <div class="scenario-card">
+          <div class="scenario-card__cover"
+               style="background: linear-gradient(135deg, #0D0D0D 0%, #2D0A2D 50%, #FF89A8 100%);">
+            <span class="scenario-card__cover-text"
+                  style="color: rgba(180,220,255,0.85); font-size:1.2rem; font-weight:700;">
+              少女N
+            </span>
+          </div>
+          <div class="scenario-card__body">
+            <div class="scenario-card__meta">
+              <span class="badge-status badge-status--dev">In Development</span>
+              <span class="badge-pl">6人用</span>
+            </div>
+            <h3 class="scenario-card__title">少女N</h3>
+            <p class="scenario-card__desc">
+              近未来で活躍するアイドルがテーマのストーリープレイング作品。
+              HO・証拠品・進行ブック設計が進行中。
+              PV映像制作済み。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- その他 — COMING SOON リスト -->
+      <ul class="coming-soon-list reveal">
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--dev">In Development</span>
+          <span class="badge-pl">6人用</span>
+          <strong class="coming-soon-item__title">オカ研VS生徒会！</strong>
+          <p class="coming-soon-item__desc">オカルト研究会3名 vs 生徒会3名。放課後の学校を舞台にした笑いと謎が交差するストーリープレイング。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--dev">In Development</span>
+          <span class="badge-pl">6人用</span>
+          <strong class="coming-soon-item__title">追憶の彷徨者（メモリー・ストライダーズ）</strong>
+          <p class="coming-soon-item__desc">ローファンタジー×群像劇。記憶を失った6人が「記録者の死」の真相に迫る協力捜査型。</p>
+        </li>
+
+        <li class="coming-soon-item">
+          <span class="badge-status badge-status--dev">In Development</span>
+          <span class="badge-pl">6人用</span>
+          <strong class="coming-soon-item__title">Bar Ruby</strong>
+          <p class="coming-soon-item__desc">近未来架空都市、SF×ノワール×本格推理の大型新作。</p>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==============================
+       双子の扉シリーズ
+  ============================== -->
+  <div class="twins-teaser">
+    <div class="twins-teaser__inner">
+      <div>
+        <div class="twins-teaser__label">Series — Coming Soon</div>
+        <h2 class="twins-teaser__title">双子の扉</h2>
+        <p class="twins-teaser__copy">
+          みしろとみくろが案内人を務めるアンソロジーシリーズ。
+          「こっそり入れる場所」から始まる、短編マーダーミステリーの連作。
+          各話は独立していて、どこから読んでも楽しめる構成を予定。
+          <br><br>
+          <em style="opacity:0.4; font-family:var(--font-serif); font-style:italic; font-size:0.9em;">
+            詳細は双子お披露目（2026年12月）以降に公開予定。
+          </em>
+        </p>
+        <a href="twins.html"
+           class="uzu-btn"
+           style="background: rgba(126,200,227,0.15); color: rgba(126,200,227,0.9); border: 1px solid rgba(126,200,227,0.4); margin-top: 28px; display: inline-block;">
+          みしろ・みくろを見る →
+        </a>
+      </div>
+      <div class="twins-teaser__chars">
+        <div class="twin-chip twin-chip--mishiro">みしろ ◯ 案内人</div>
+        <div class="twin-chip twin-chip--mikuro">みくろ ◯ 記録者</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================
+       活動履歴
+  ============================== -->
+  <section class="activity-section">
+    <div class="activity-section__inner">
+
+      <div class="section-label" style="margin-bottom:0;">
+        <span>Activity</span>
+      </div>
+      <h2 class="section-title" style="margin-top:8px; margin-bottom:0;">活動履歴</h2>
+
+      <table class="activity-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="col-type">種別</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-year">2026</td>
+            <td class="col-type">
+              <span class="activity-label activity-label--write">WRITE</span>
+            </td>
+            <td>
+              「オカ研VS生徒会！」「少女N」 — GM有り6人用シナリオ、HO・証拠品・GMガイド制作中
+            </td>
+          </tr>
+          <tr>
+            <td class="col-year">2026</td>
+            <td class="col-type">
+              <span class="activity-label activity-label--design">DESIGN</span>
+            </td>
+            <td>
+              NANIMONO様 マーダーミステリーイベント「コンティニューしますか？」（3/20）映像制作（オープニング・ゲームクリア・船内調査映像ほか）
+            </td>
+          </tr>
+          <tr>
+            <td class="col-year">2026</td>
+            <td class="col-type">
+              <span class="activity-label activity-label--design">DESIGN</span>
+            </td>
+            <td>
+              マーダーミステリー専門店 JOLDEENO吉祥寺マチナカ店 看板・サイネージデザイン制作
+            </td>
+          </tr>
+          <tr>
+            <td class="col-year">2025</td>
+            <td class="col-type">
+              <span class="activity-label activity-label--design">DESIGN</span>
+            </td>
+            <td>
+              謎解きプラットフォーム「escape.id」Webメディアデザイン制作
+            </td>
+          </tr>
+          <tr>
+            <td class="col-year">2023</td>
+            <td class="col-type">
+              <span class="activity-label activity-label--gm">GM</span>
+            </td>
+            <td>
+              マーダーミステリー専門店 JOLDEENOにてGMスタッフとして活動開始
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- ==============================
+       CTA BAND — BOOTH
+  ============================== -->
+  <div class="uzu-band" style="background: linear-gradient(135deg, #1a2840 0%, #0e1a2e 50%, #1a1030 100%);">
+    <div class="uzu-band__inner" style="max-width:760px;">
+      <div class="uzu-band__label">Purchase &amp; Play</div>
+      <h2 class="uzu-band__title">作品を手に入れる</h2>
+      <p class="uzu-band__copy">
+        シナリオはBOOTHにてPDF版を販売予定。<br>
+        公開情報はXまたはFANBOXにてお知らせします。
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://atelierinupunch.booth.pm" target="_blank" rel="noopener noreferrer"
+           class="uzu-btn" style="background:#f4a7b9; color:#1a0a14;">
+          → BOOTHショップを見る
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p class="footer__copy">© 御子柴しげ / AtelierInuPunch</p>
+    <div class="footer__sns">
+      <a href="https://www.youtube.com/@shigechanwanko" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+      <a href="https://x.com/MikoshibaShige" target="_blank" rel="noopener noreferrer">✕ X</a>
+      <a href="https://shigewanchan.fanbox.cc/" target="_blank" rel="noopener noreferrer">★ FANBOX</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
